@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" ng-app="markdownApp">
+<head>
+  <meta charset="utf-8">
+  <title>Markie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/codemirror.css"/>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/styles/app.css"/>
+  <script src="/__/env.js"></script>
+</head>
+<body ng-cloak>
+  <div class="app">
+    <header class="navbar" ng-controller="NavCtrl">
+      <nav class="pure-menu-horizontal">
+        <ul class="pure-menu-left">
+          <li>
+            <form class="pure-form search-form" role="search">
+              <i class="fa fa-search"></i>
+              <input type="search" placeholder="Search…" ng-model="query" ng-keyup="search()" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="50">
+            </form>
+          </li>
+        </ul>
+        <ul class="pure-menu-right">
+          <li><button ng-click="create()" class="pure-button"><i class="fa fa-plus"></i>&nbsp; New Document</button></li>
+          <li><a href="/" class="logo">Markie</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <aside class="browser" ng-controller="BrowserCtrl">
+      <div class="file" ng-click="select(file.id)" ng-class="{ selected: file.id == selectedFile }" ng-repeat="file in files">
+        <span class="title">{{file.title | cut:false:30}}</span>
+        <span class="modified" am-time-ago="file.modified"></span>
+        <p>{{file.content | cut:false:72}}</p>
+      </div>
+      <p ng-if="!files.length" class="no-files">No files were found.</p>
+    </aside>
+
+    <section class="main">
+      <div class="content" ui-view></div>
+    </section>
+  </div>
+
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/lodash/dist/lodash.underscore.js"></script>
+  <script src="/bower_components/highlightjs/highlight.pack.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/codemirror.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/mode/markdown/markdown.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/addon/display/placeholder.js"></script>
+
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/angular-moment/angular-moment.js"></script>
+  <script src="/bower_components/angular-local-storage/angular-local-storage.js"></script>
+
+  <script src="/scripts/app.js"></script>
+  <script src="/scripts/config.js"></script>
+  <script src="/scripts/controllers/main.js"></script>
+  <script src="/scripts/controllers/browser.js"></script>
+  <script src="/scripts/controllers/nav.js"></script>
+  <script src="/scripts/directives/markdown-editor.js"></script>
+  <script src="/scripts/services/files.js"></script>
+  <script src="/scripts/filters/cut.js"></script>
+  <script src="/scripts/filters/filename.js"></script>
+</body>
+</html>
