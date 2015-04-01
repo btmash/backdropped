@@ -8,3 +8,9 @@ body {
   position: fixed;
   background: url("../images/intermission.jpg") no-repeat fixed center center / cover rgba(0, 0, 0, 0);
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
