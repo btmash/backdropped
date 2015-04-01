@@ -1,3 +1,3 @@
-# Markie
+# Backdropped
 
-A simple markdown editor built with AngularJS for showcasing static web features in Divshot.
+A simple app to grab a gif from giphy every 5 seconds.
