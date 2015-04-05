@@ -5,7 +5,7 @@ $(document).ready(function() {
       image_background_css = 'url("' + giphy.data.image_url + '") no-repeat fixed center center / cover rgba(0, 0, 0, 0)';
       $('.content').css('background', image_background_css);
     });
-    setTimeout(function() { play_scream(); }, 2000);
+//    setTimeout(function() { play_scream(); }, 2000);
     setTimeout(function() { transition(); }, 10000);
   }
   function transition() {
