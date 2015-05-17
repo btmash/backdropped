@@ -1,6 +1,6 @@
 $(document).ready(function() {
   function replace_gif() {
-    var tags = ['wrestling+woo', 'wrestling+backdrop'];
+    var tags = ['ric+flair+woo+excited+vintage', 'wrestling+backdrop'];
     var xhr = $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + tags[Math.floor(Math.random()*tags.length)]);
     xhr.done(function(giphy) {
       image_background_css = 'url("' + giphy.data.image_url + '") no-repeat fixed center center / cover rgba(0, 0, 0, 0)';
